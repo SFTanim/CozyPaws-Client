@@ -7,14 +7,13 @@ import Swal from "sweetalert2";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: allUser,refetch } = useQuery({
+  const { data: allUser, refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get("users");
       return res.data;
     },
   });
-  console.log("AllUser: ", allUser);
 
   const handleMakeAdmin = (user) => {
     Swal.fire({
@@ -27,15 +26,14 @@ const AllUsers = () => {
       confirmButtonText: "Yes!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.post(`/makeAdmin/${user?._id}`)
-        .then((res) => {
+        axiosSecure.post(`/makeAdmin/${user?._id}`).then((res) => {
           if (res?.data?.acknowledged) {
             Swal.fire({
               title: "Done!",
               text: "He is a admin.",
               icon: "success",
             });
-            refetch()
+            refetch();
           }
         });
       }
@@ -52,18 +50,16 @@ const AllUsers = () => {
       confirmButtonText: "Yes!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure
-          .post(`/userBan/${user?._id}`)
-          .then((res) => {
-            if (res?.data?.acknowledged) {
-              Swal.fire({
-                title: "Done!",
-                text: "He is a admin.",
-                icon: "success",
-              });
-              refetch()
-            }
-          });
+        axiosSecure.post(`/userBan/${user?._id}`).then((res) => {
+          if (res?.data?.acknowledged) {
+            Swal.fire({
+              title: "Done!",
+              text: "He is a admin.",
+              icon: "success",
+            });
+            refetch();
+          }
+        });
       }
     });
   };
