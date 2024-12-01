@@ -84,7 +84,7 @@ const DonationCampaign = () => {
           </p>
         }
       >
-        <div className="grid grid-cols-1 mg:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 mg:grid-cols-2 lg:grid-cols-3 gap-10 px-3 md:px-0 lg:px-0">
         {allDonationArray?.slice(0, visibleDonations)?.map((donation, idx) => (
           <div key={idx} className="card bg-base-100 shadow-xl">
             <div className="card bg-base-100 shadow-xl" key={donation?._id}>

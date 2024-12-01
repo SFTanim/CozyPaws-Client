@@ -6,7 +6,7 @@ import PetCategories from "../../components/Home/PetCategories";
 
 const Home = () => {
   return (
-    <div className="space-y-16">
+    <div className="space-y-16 px-3 md:px-0 lg:px-0">
       <Banner></Banner>
       <PetCategories></PetCategories>
       <CallToAction></CallToAction>

@@ -19,7 +19,8 @@ const Dashboard = () => {
   return (
     <div>
       <div className="drawer drawer-end lg:drawer-open">
-        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+        <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+
         <div className="drawer-content flex flex-col items-center justify-center">
           {/* Page content here */}
           <div className="w-full h-full">
@@ -41,7 +42,7 @@ const Dashboard = () => {
               </div>
               <div className="flex-none flex items-center">
                 <label
-                  htmlFor="my-drawer-2"
+                  htmlFor="my-drawer-4"
                   className="commonly-used-button3 drawer-button lg:hidden"
                 >
                   Menu
@@ -51,43 +52,47 @@ const Dashboard = () => {
             <Outlet></Outlet>
           </div>
         </div>
-        <div className="drawer-side p-0 lg:p-4 border-l-2 border-transparent lg:border-black">
+
+        <div className="drawer-side p-0 lg:p-4 border-l-2 ">
           <label
-            htmlFor="my-drawer-2"
+            htmlFor="my-drawer-4"
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-
+          <div className="bg-white">
+            
           {/* Only Admins Dashboard */}
-          {isAdmin ? (
-            <div className="">
-              <h2 className="text-center my-2 text-[#adca29]">
-                Admins Dashboard
-              </h2>
-              <ul className="menu gap-1 border-0 lg:border-2 bg-white text-base-content rounded-xl w-80 p-4">
-                <li id="navBarLink2">
-                  <NavLink to={"/dashboard/allUsers"}>
-                    {" "}
-                    <h2 className="capitalize">All Users</h2>
-                  </NavLink>
-                </li>
-                <li id="navBarLink2">
-                  <NavLink to={"/dashboard/allPets"}>
-                    {" "}
-                    <h2 className="capitalize"> All Pets</h2>
-                  </NavLink>
-                </li>
-                <li id="navBarLink2">
-                  <NavLink to={"/dashboard/allDonations"}>
-                    {" "}
-                    <h2 className="capitalize"> all donations</h2>
-                  </NavLink>
-                </li>
-              </ul>
-            </div>
-          ) : (
-            <div className=""></div>
-          )}
+          <div className="">
+            {isAdmin ? (
+              <div className="">
+                <h2 className="text-center my-2 text-[#adca29]">
+                  Admins Dashboard
+                </h2>
+                <ul className="menu gap-1 mx-2 border-2 bg-white text-base-content rounded-xl w-80 p-4">
+                  <li id="navBarLink2">
+                    <NavLink to={"/dashboard/allUsers"}>
+                      {" "}
+                      <h2 className="capitalize">All Users</h2>
+                    </NavLink>
+                  </li>
+                  <li id="navBarLink2">
+                    <NavLink to={"/dashboard/allPets"}>
+                      {" "}
+                      <h2 className="capitalize"> All Pets</h2>
+                    </NavLink>
+                  </li>
+                  <li id="navBarLink2">
+                    <NavLink to={"/dashboard/allDonations"}>
+                      {" "}
+                      <h2 className="capitalize"> all donations</h2>
+                    </NavLink>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <div className=""></div>
+            )}
+          </div>
 
           {/* Users and Admins Common Dashboard */}
           <div className="">
@@ -95,7 +100,7 @@ const Dashboard = () => {
               Your User Dashboard
             </h2>
 
-            <ul className="menu gap-1 border-0 lg:border-2 bg-white text-base-content rounded-xl w-80 p-4">
+            <ul className="menu gap-1 mx-2 border-2 bg-white text-base-content rounded-xl w-80 p-4">
               <li id="navBarLink2">
                 <NavLink to={"/dashboard/addAPet"}>
                   {" "}
@@ -133,6 +138,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
             </ul>
+          </div>
           </div>
         </div>
       </div>

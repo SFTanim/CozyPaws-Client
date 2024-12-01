@@ -22,7 +22,7 @@ const AboutUs = () => {
         <div className="flex justify-center flex-1 relative">
           <div className="">
             <img
-              className="max-w-96 rounded-full border border-black"
+              className="max-w-72 lg:max-w-96 mt-5 md:mt-0 lg:mt-0 rounded-full border border-black"
               src="https://i.ibb.co.com/rmbc9cS/sxa-min.jpg"
               alt=""
             />
