@@ -82,7 +82,6 @@ const AuthProvider = ({ children }) => {
         localStorage.removeItem("access_token");
         setLoading(false);
       }
-      console.log(user);
       setLoading(false);
     });
 
@@ -91,7 +90,6 @@ const AuthProvider = ({ children }) => {
     };
   }, [user, axiosPublic]);
 
-  console.log(user);
   
   const allValue = {
     loginWithGithub,

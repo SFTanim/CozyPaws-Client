@@ -70,8 +70,7 @@ const Login = () => {
           navigate(location?.state ? location.state : "/");
         }
       })
-      .catch((error) => {
-        console.log(error.message);
+      .catch(() => {
         warningToast("Unsuccessful Google login");
       });
   };
@@ -92,8 +91,7 @@ const Login = () => {
           navigate(location?.state ? location.state : "/");
         }
       })
-      .catch((error) => {
-        console.log(error.message);
+      .catch(() => {
         warningToast("Unsuccessful Google login");
       });
   };

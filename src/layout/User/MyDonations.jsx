@@ -56,7 +56,6 @@ const MyDonations = () => {
 
   const handleRefund = (donation) => {
     const donationId = donation?._id;
-    console.log("total money: ", donation?.donatedMoney);
 
     Swal.fire({
       title: "Are you sure you want a refund?",
@@ -68,10 +67,8 @@ const MyDonations = () => {
       confirmButtonText: "Yes, refund it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log("Refund Success");
         donation?.donatedPersons.map(async (person) => {
           const newValueForDonation = donation?.donatedMoney - person?.amount;
-          console.log(newValueForDonation);
           const paymentId = person?.paymentIntentId;
           if (!paymentId) {
             return Swal.fire({

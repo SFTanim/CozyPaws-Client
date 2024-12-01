@@ -22,7 +22,6 @@ const PetListing = () => {
   const {
     isPending: petDataPending,
     error: petError,
-    data: pet,
     refetch,
   } = useQuery({
     queryKey: ["pet", petName],
@@ -56,7 +55,7 @@ const PetListing = () => {
     const name = e?.target?.name?.value;
     setPetName(name);
     e.target.reset();
-    refetch()
+    refetch();
   };
 
   // For All Pets Button
@@ -71,7 +70,7 @@ const PetListing = () => {
     const category = e.target.value;
     setSelectedCategory(category);
     setSearchedPet(null);
-    if(category){
+    if (category) {
       axiosPublic.get(`/petsCategorized/${category}`).then((res) => {
         if (res.data.length === 0) {
           Swal.fire({
@@ -89,10 +88,7 @@ const PetListing = () => {
         setCategorizedPet(res.data);
       });
     }
-    
   };
-
-
 
   if (isPending)
     return (
@@ -137,9 +133,26 @@ const PetListing = () => {
       </div>
     );
 
-  if (petError) return console.log(petError);
+  if (petError)
+    return (
+      <div role="alert" className="alert alert-warning mt-10 w-3/4 mx-auto">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6 shrink-0 stroke-current"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <span>An error has occurred: {petError.message}</span>
+      </div>
+    );
 
-  console.log(categorizedPet);
   return (
     <div>
       <PageTitle
@@ -191,8 +204,8 @@ const PetListing = () => {
       </div>
 
       {/* Searched Pet */}
-      {searchedPet ? (
-        <div className="border-2 p-4 mb-10 rounded">
+      {searchedPet  ? (
+        <div className=" p-4 mb-10 rounded">
           <h2 className="text-center font-bold">Searched Pet</h2>
           <div className="card bg-base-100 shadow-xl max-w-96 mx-auto">
             <figure>
@@ -231,7 +244,7 @@ const PetListing = () => {
           </div>
         </div>
       ) : categorizedPet?.length > 0 ? (
-        <div className="border-2 p-4 mb-10 rounded">
+        <div className=" p-4 mb-10 rounded">
           <h2 className="text-center font-bold">Categorized Pet</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-10 px-2">
             {Array.isArray(categorizedPet) ? (
@@ -278,7 +291,7 @@ const PetListing = () => {
           </div>
         </div>
       ) : (
-        <div className="border-2 p-4 mb-10 rounded">
+        <div className=" p-4 mb-10 rounded">
           <h2 className="text-center font-bold">All Pets</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-10 px-2">
             {Array.isArray(pets) ? (

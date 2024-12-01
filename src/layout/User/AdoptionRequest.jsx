@@ -56,7 +56,6 @@ const AdoptionRequest = () => {
     );
 
   const handleAccept = (id) => {
-    console.log(id);
     const data = {
       adopt: true,
     };

@@ -20,10 +20,8 @@ const CreateDonationCampaign = () => {
     todaysDate.getMonth() +
     "-" +
     todaysDate.getDate();
-  console.log(todaysDate, date);
 
   const handleImbbImageUpload = async (file) => {
-    console.log(file);
     const imageFile = { image: file };
     const res = await axiosSecure.post(imageHostingApi, imageFile, {
       headers: {
@@ -74,9 +72,7 @@ const CreateDonationCampaign = () => {
         donatedMoney: 0,
         canDonate: true,
       };
-      console.log(values, donationInfo);
       axiosSecure.post("/donations", donationInfo).then((res) => {
-        console.log(res?.data?.insertedId);
         if (res?.data?.insertedId) {
           Swal.fire({
             position: "top-end",

@@ -62,12 +62,10 @@ const MyDonationCampaigns = () => {
   useEffect(() => {
     if (donationId) {
       refetchInfo();
-      console.log("Fetched donationInfo", donationInfo);
       setImageUrl(donationInfo?.image);
     }
   }, [donationInfo, donationId, refetchInfo]);
 
-  console.log("donation", myDonation);
 
   const handleEdit = () => {
     if (typeof donationInfo === "object") {
@@ -85,7 +83,6 @@ const MyDonationCampaigns = () => {
     canDonate: donationInfo?.canDonate?.value,
   };
 
-  console.log("can donate ", donationInfo?.canDonate.value);
   const validate = (values) => {
     const errors = {};
     if (!values.petName) {
@@ -117,9 +114,7 @@ const MyDonationCampaigns = () => {
         lastDate: values?.lastDate,
         canDonate: values?.canDonate?.value,
       };
-      console.log(values, donationData);
       axiosSecure.post(`/donations/${donationId}`, donationData).then((res) => {
-        console.log(res?.data);
         if (res?.data?.acknowledged) {
           const modal = document.getElementById("my_modal_5");
           modal.close();
@@ -155,8 +150,6 @@ const MyDonationCampaigns = () => {
       canDonate: false,
     };
     axiosSecure.post(`/donations/${id}`, donationData).then((res) => {
-      console.log(res?.data);
-      console.log("done");
       if (res?.data?.acknowledged) {
         Swal.fire({
           position: "top-end",
@@ -206,7 +199,6 @@ const MyDonationCampaigns = () => {
       </div>
     );
 
-  console.log("donationInfo", donationInfo);
   return (
     <div>
       <PageTitle heading={"My Donation Campaigns"}></PageTitle>

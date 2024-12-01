@@ -14,7 +14,6 @@ const AllPets = () => {
       return res.data;
     },
   });
-  console.log("AllPets: ", allPets);
 
   const handleDelete = (pet) => {
     Swal.fire({
@@ -42,10 +41,8 @@ const AllPets = () => {
   };
 
   const handleAdoptStatusChange = (pet) => {
-    console.log(pet);
-    const adoptData = { adopt: pet?.adopt }
+    const adoptData = { adopt: pet?.adopt };
     if (pet?.adopt === true) {
-      console.log("Adopted");
       Swal.fire({
         title: "Are you sure, you want to change this to NOT ADOPTED?",
         text: "You won't be able to revert this!",
@@ -56,7 +53,7 @@ const AllPets = () => {
         confirmButtonText: "Yes!",
       }).then((result) => {
         if (result.isConfirmed) {
-            axiosSecure.post(`/pets/${pet?._id}`, adoptData).then((res) => {
+          axiosSecure.post(`/pets/${pet?._id}`, adoptData).then((res) => {
             if (res?.data?.acknowledged) {
               Swal.fire({
                 title: "Done!",
@@ -68,9 +65,7 @@ const AllPets = () => {
           });
         }
       });
-      
     } else {
-      console.log("Not Adopted");
       Swal.fire({
         title: "Are you sure, you want to change this to ADOPTED?",
         text: "You won't be able to revert this!",
@@ -81,7 +76,7 @@ const AllPets = () => {
         confirmButtonText: "Yes!",
       }).then((result) => {
         if (result.isConfirmed) {
-            axiosSecure.post(`/pets/${pet?._id}`, adoptData).then((res) => {
+          axiosSecure.post(`/pets/${pet?._id}`, adoptData).then((res) => {
             if (res?.data?.acknowledged) {
               Swal.fire({
                 title: "Done!",
