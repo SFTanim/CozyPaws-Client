@@ -121,7 +121,7 @@ const AddAPet = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-screen">
       <PageTitle heading={"Add A pet"}></PageTitle>
 
       <div className="p-0 lg:p-10 text-xl">
