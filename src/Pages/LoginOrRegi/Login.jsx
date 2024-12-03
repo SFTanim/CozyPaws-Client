@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import useAuth from "../../components/hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../components/hooks/useAxiosPublic";
 import { FcGoogle } from "react-icons/fc";
 import { FaSquareGithub } from "react-icons/fa6";
+import useAuth from "../../components/hooks/useAuth";
 
 const Login = () => {
   const {
@@ -70,7 +70,8 @@ const Login = () => {
           navigate(location?.state ? location.state : "/");
         }
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         warningToast("Unsuccessful Google login");
       });
   };

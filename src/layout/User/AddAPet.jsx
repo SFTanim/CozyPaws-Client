@@ -4,6 +4,7 @@ import Select from "react-select";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import useAuth from "../../components/hooks/useAuth";
+import useAxiosPublic from "../../components/hooks/useAxiosPublic";
 import useAxiosSecure from "../../components/hooks/useAxiosSecure";
 
 const petCategories = [
@@ -19,24 +20,27 @@ const imageHostingAPI = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
 
 const AddAPet = () => {
   const { user } = useAuth();
+  const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const [imageUrl, setImageUrl] = useState(null);
   const timeAndDate = new Date();
-  // const date =
-  //   timeAndDate.getDate() +
-  //   "-" +
-  //   timeAndDate.getMonth() +
-  //   "-" +
-  //   timeAndDate.getFullYear();
 
   const handleImageUpload = async (file) => {
     const imageFile = { image: file };
-    const res = await axiosSecure.post(imageHostingAPI, imageFile, {
+    const res = await axiosPublic.post(imageHostingAPI, imageFile, {
       headers: {
         "content-type": "multipart/form-data",
       },
     });
-    setImageUrl(res?.data?.data?.display_url);
+    if (res?.data?.data?.display_url) {
+      setImageUrl(res.data.data.display_url);
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Failed to upload image!",
+      });
+    }
   };
 
   const validate = (values) => {

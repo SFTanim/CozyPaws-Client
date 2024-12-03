@@ -49,7 +49,7 @@ const PetDetails = () => {
     <div>
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure className="flex-1">
-          <img src={pet?.image} alt="Album" />
+          <img className="rounded-md" src={pet?.image} alt="Album" />
         </figure>
         <div className="card-body flex-1">
           <h2 className="card-title text-3xl">Pet Name: {pet?.name}</h2>

@@ -43,7 +43,7 @@ const Dashboard = () => {
               <div className="flex-none flex items-center">
                 <label
                   htmlFor="my-drawer-4"
-                  className="commonly-used-button3 drawer-button lg:hidden"
+                  className="commonly-used-button3 drawer-button lg:hidden mr-2"
                 >
                   Menu
                 </label>
@@ -53,13 +53,13 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="drawer-side p-0 lg:p-4 border-l-2 ">
+        <div className="drawer-side p-0 lg:p-4 border-l-2">
           <label
             htmlFor="my-drawer-4"
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <div className="bg-white">
+          <div className="bg-white min-h-full ">
             
           {/* Only Admins Dashboard */}
           <div className="">

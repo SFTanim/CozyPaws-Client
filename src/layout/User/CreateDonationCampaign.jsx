@@ -4,12 +4,14 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import Swal from "sweetalert2";
 import useAuth from "../../components/hooks/useAuth";
 import useAxiosSecure from "../../components/hooks/useAxiosSecure";
+import useAxiosPublic from "../../components/hooks/useAxiosPublic";
 
 const imageHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
 
 const CreateDonationCampaign = () => {
   const { user } = useAuth();
+  const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const [imageUrl, setImageUrl] = useState(null);
 
@@ -23,7 +25,7 @@ const CreateDonationCampaign = () => {
 
   const handleImbbImageUpload = async (file) => {
     const imageFile = { image: file };
-    const res = await axiosSecure.post(imageHostingApi, imageFile, {
+    const res = await axiosPublic.post(imageHostingApi, imageFile, {
       headers: {
         "content-type": "multipart/form-data",
       },

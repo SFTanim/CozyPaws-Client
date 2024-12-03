@@ -49,35 +49,49 @@ const Navber = () => {
 
         <div className="flex lg:hidden">
           <div className="dropdown dropdown-end mx-2">
-            <div tabIndex={0} role="button" className="btn m-1">
-              {user?.photoURL ? (
-                <img className="h-9 rounded-full" src={user?.photoURL} alt="" />
+            <div className="btn">
+              {user ? (
+                <div className="dropdown dropdown-end ">
+                  <div tabIndex={0} role="button" className="">
+                    {user?.photoURL ? (
+                      <img
+                        className="h-9 rounded-full"
+                        src={user?.photoURL}
+                        alt=""
+                      />
+                    ) : (
+                      <CgProfile />
+                    )}
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+                  >
+                    <li>
+                      <Link to={"/dashboard/addAPet"} className="border flex">
+                        <h2 className="w-full text-center">Dashboard</h2>
+                      </Link>
+                    </li>
+                    <li>
+                      <button
+                        onClick={handleLogout}
+                        className="commonly-used-button-red"
+                      >
+                        <h2 className="w-full text-center">Logout</h2>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
               ) : (
-                <CgProfile />
+                <Link to="/login" className="commonly-used-button">
+                  Login
+                </Link>
               )}
             </div>
-            <ul
-              tabIndex={0}
-              className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
-            >
-              <li>
-                <Link to={"/dashboard/addAPet"} className="border flex">
-                  <h2 className="w-full text-center">Dashboard</h2>
-                </Link>
-              </li>
-              <li>
-                <button
-                  onClick={handleLogout}
-                  className="commonly-used-button-red"
-                >
-                  <h2 className="w-full text-center">Logout</h2>
-                </button>
-              </li>
-            </ul>
           </div>
 
           <div className=" dropdown dropdown-end">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={1} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -95,20 +109,11 @@ const Navber = () => {
             </div>
 
             <ul
-              tabIndex={0}
+              tabIndex={1}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 space-y-2 shadow bg-base-100 rounded-box w-52"
             >
               {navLinks}
 
-              {user ? (
-                <button onClick={handleLogout} className="commonly-used-button">
-                  Logout
-                </button>
-              ) : (
-                <Link to="/login" className="commonly-used-button2">
-                  Login
-                </Link>
-              )}
               <label className="cursor-pointer grid place-items-center">
                 <input
                   defaultChecked={darkTheme}
@@ -123,10 +128,12 @@ const Navber = () => {
             </ul>
           </div>
         </div>
+
+        {/* For Large Screen */}
         <div className=" hidden lg:flex">
-          <ul className="menu flex flex-row flex-nowrap pr-4" >{navLinks}</ul>
+          <ul className="menu flex flex-row flex-nowrap pr-4">{navLinks}</ul>
           {user ? (
-            <div className="dropdown dropdown-end mx-2 tooltip tooltip-bottom" data-tip={user?.displayName}>
+            <div className="dropdown dropdown-end mx-2">
               <div tabIndex={0} role="button" className="btn m-1">
                 {user?.photoURL ? (
                   <img

@@ -9,10 +9,10 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import auth from "../firebase/firebase.config";
 import useLocalStorage from "use-local-storage";
 import useAxiosPublic from "../components/hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import auth from "../firebase/firebase.config";
 
 export const AuthContext = createContext();
 

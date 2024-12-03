@@ -74,7 +74,7 @@ const DonationDetails = () => {
     <div>
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure className="flex-1">
-          <img src={donation?.image} alt="Album" />
+          <img className="rounded-md" src={donation?.image} alt="Album" />
         </figure>
         <div className="card-body flex-1">
           <h2 className="card-title text-3xl">Pet Name: {donation?.name}</h2>
